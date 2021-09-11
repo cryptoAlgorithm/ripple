@@ -1,0 +1,204 @@
+div.textfield:focus {
+  outline: none;
+}
+
+div.textfield {
+  min-height: 56px;
+  position: relative;
+  
+  --ripple-opacity: .08;
+  
+  border-radius: 4px;
+}
+
+div.textfield > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  pointer-events: none;
+  
+  color: #ffffffb3;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 24px);
+  
+  transform: translate(12px, 16px) scale(1);
+  transform-origin: left top;
+  transition: transform .2s ease-out, color .2s ease-in-out;
+}
+div.textfield.focus > label {
+  color: var(--theme);
+}
+
+div.textfield > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  
+  height: 1.4375em;
+  width: calc(100% - 1.5rem);
+  padding: 1.5625rem .75rem .5rem;
+  caret-color: var(--theme);
+  
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+}
+
+/* ------ Filled/standard ------ */
+
+div.textfield.filled {
+  background-color: #ffffff17;
+  
+  transition: background-color .2s ease-in-out;
+}
+div.textfield.mordern.filled:hover {
+  background-color: #ffffff21;
+}
+
+div.textfield.filled > div.textfield__underline, div.textfield.standard > div.textfield__underline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  
+  height: 2px;
+  background-color: #ffffff33;
+  transition: background-color .2s ease-in-out;
+}
+div.textfield.filled:hover > div.textfield__underline, div.textfield.standard:hover > div.textfield__underline {
+  background-color: #ffffff88;
+}
+
+div.textfield.filled > div.textfield__underline > div.textfield__line, div.textfield.standard > div.textfield__underline > div.textfield__line {
+  width: 100%;
+  height: 100%;
+  
+  background-color: var(--theme);
+  
+  transform: scaleX(0);
+  
+  transition: transform .2s ease-in-out;
+}
+div.textfield.filled.focus > div.textfield__underline > div.textfield__line, div.textfield.standard.focus > div.textfield__underline > div.textfield__line {
+  transform: scaleX(1);
+}
+
+div.textfield.filled.focus > label, div.textfield.filled.has-content > label {
+  transform: translate(12px, 7px) scale(.75);
+}
+
+/* ------ Standard ------ */
+
+div.textfield.standard {
+  min-height: 48px;
+}
+
+div.textfield.standard > input {
+  padding: 4px 0px 5px;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+div.textfield.standard > label {
+  transform: translate(0, 20px) scale(1);
+}
+div.textfield.standard.focus > label, div.textfield.standard.has-content > label {
+  transform: translate(0, -1.75px) scale(.75);
+}
+
+/* ------ Outlined ------ */
+
+div.textfield.outlined > input {
+  padding: 16.5px 14px;
+}
+
+div.textfield.outlined > div.textfield__outline {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  --border: 1px solid #ffffff3b;
+}
+div.textfield.outlined:hover > div.textfield__outline {
+  --border: 1px solid #ffffff88;
+}
+div.textfield.outlined.focus > div.textfield__outline {
+  --border: 2px solid var(--theme);
+}
+
+div.textfield.outlined > div.textfield__outline > div.textfield__o1 {
+  width: .5rem;
+  border-radius: 4px 0 0 4px;
+  border-top: var(--border);
+  border-right: none;
+  border-bottom: var(--border);
+  border-left: var(--border);
+}
+div.textfield.outlined > div.textfield__outline > div.textfield__o2 {
+  border-radius: 0;
+  border-top: var(--border);
+  border-right: none;
+  border-bottom: var(--border);
+  border-left: none;
+}
+div.textfield.outlined.focus > div.textfield__outline > div.textfield__o2, div.textfield.outlined.has-content > div.textfield__outline > div.textfield__o2 {
+  border-top: none;
+}
+div.textfield.outlined > div.textfield__outline > div.textfield__o3 {
+  flex-grow: 1;
+  border-radius: 0 4px 4px 0;
+  border-top: var(--border);
+  border-right: var(--border);
+  border-bottom: var(--border);
+  border-left: none;
+}
+
+div.textfield.outlined > div.textfield__outline > div.textfield__o2 > span {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
+  font-size: 0.75em;
+  visibility: hidden;
+}
+
+div.textfield__holder {
+  position: relative;
+}
+
+div.textfield__holder > fieldset {
+  text-align: left;
+  position: absolute;
+  inset: -5px 0px 0px;
+  margin: 0px;
+  padding: 0px 8px;
+  pointer-events: none;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  min-width: 0%;
+  border-color: rgba(255, 255, 255, 0.23);
+}
+div.textfield__holder > fieldset {
+  border-color: rgb(25, 118, 210);
+  border-width: 2px;
+}
+
+div.textfield__holder > fieldset > legend > span {
+  font-size: 0.75em;
+  visibility: hidden;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
+}
+
+div.textfield.outlined.focus > label, div.textfield.outlined.has-content > label {
+  transform: translate(14px, -9px) scale(0.75);
+}
