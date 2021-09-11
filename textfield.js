@@ -6,7 +6,10 @@ class TextField {
     console.log(this.txtF);
     
     if (document.activeElement === this.txtF) this.elem.classList.add('focus')
-    if (this.txtF.value.length > 0 && document.activeElement !== this.txtF) this.elem.classList.add('has-content');
+    else {
+      if (this.txtF.value.length > 0) this.elem.classList.add('has-content');
+      else this.elem.classList.remove('has-content');
+    }
     
     this.txtF.onfocus = () =>  this.elem.classList.add('focus');
     this.txtF.onblur = () => {
